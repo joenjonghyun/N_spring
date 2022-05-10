@@ -71,4 +71,9 @@ public class UserServiceImpl implements UserService{
     public boolean existsById(String userid) {
         return false;
     }
+
+    @Override
+    public String put(User user) {
+        return null;
+    }
 }

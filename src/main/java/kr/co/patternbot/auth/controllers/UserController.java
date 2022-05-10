@@ -27,6 +27,12 @@ public class UserController {
     public String logout() {
         return "";
     }
+    @PutMapping("/put")
+    public String put(@RequestBody User user) {
+        return service.put(user);
+    }
+
+
     // Embeded Methods
     @GetMapping("/findAll")
     public List<User> findAll() {
