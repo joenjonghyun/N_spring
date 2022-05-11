@@ -20,7 +20,7 @@ public class MemberCRUD {
         Scanner s = new Scanner(System.in);
         MemberService service = new MemberServiceImpl();
         while (true) {
-            System.out.println("0.exit 1.sava 2.update 3.delete 4.findById 5.findByName 6.findAll 7.count 8.existsById 9.clear");//네이밍컨벤션을맞춤
+            System.out.println("0.exit 1.save 2.update 3.delete 4.findById 5.findByName 6.findAll 7.count 8.existsById 9.clear");//네이밍컨벤션을맞춤
             switch (s.next()) {
                 case "0":
                     return;
@@ -42,14 +42,7 @@ public class MemberCRUD {
                     service.delete(temp);
                     break;
                 case "4":
-                    Member m = new Member();
-                    m.setUserid(m.userid);
-                    if (service.findById(m.userid)==null){
-                        System.out.println("없음");
-                    }else {
-                        System.out.println("있음");
-                    }
-
+                    //?
                     break;
                 case "5":
                     break;
@@ -60,6 +53,7 @@ public class MemberCRUD {
                     System.out.println("총 회원 수 : "+service.count());
                     break;
                 case "8":
+                    System.out.println(service.existsById("hong"));
                     break;
                 case "9":
                     service.clear();
