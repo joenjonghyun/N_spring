@@ -2,6 +2,7 @@ package kr.co.patternbot.auth.services;
 
 import kr.co.patternbot.auth.domains.User;
 import kr.co.patternbot.auth.repositories.UserRepository;
+import kr.co.patternbot.common.dataStructure.Box;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -74,6 +75,16 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public String put(User user) {
+        return null;
+    }
+
+
+    @Override
+    public List<User> findByUserName(String name) {
+        List<User> ls = repository.findAll();
+        Box<String, User> box = new Box<>();
+        //ls = box.findByUserName(ls, name);
+        //ls.stream().filter()~~ 이렇게 간다.
         return null;
     }
 }

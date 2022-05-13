@@ -30,4 +30,8 @@ public interface UserService {
     boolean existsById(String userid);
 
     String put(User user);
+
+    // custom
+
+    List<User> findByUserName(String name);
 }
