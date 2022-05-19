@@ -1,4 +1,4 @@
 package kr.co.patternbot.board.domains;
 
-public class Board {
+public class Board1 {
 }

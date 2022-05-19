@@ -1,25 +1,24 @@
 package kr.co.patternbot.board.services;
 
-import kr.co.patternbot.board.domains.Article;
+import kr.co.patternbot.board.domains.Article1;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ArticleService {
-    List<Article> findAll();
+    List<Article1> findAll();
 
-    List<Article> findAll(Sort sort);
+    List<Article1> findAll(Sort sort);
 
-    Page<Article> findAll(Pageable pageable);
+    Page<Article1> findAll(Pageable pageable);
 
     long count();
 
-    String delete(Article article);
+    String delete(Article1 article);
 
-    String save(Article article);
+    String save(Article1 article);
 
 
 }

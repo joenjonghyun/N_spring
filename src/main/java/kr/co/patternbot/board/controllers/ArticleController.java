@@ -1,6 +1,6 @@
 package kr.co.patternbot.board.controllers;
 
-import kr.co.patternbot.board.domains.Article;
+import kr.co.patternbot.board.domains.Article1;
 import kr.co.patternbot.board.services.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -9,7 +9,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/article")
@@ -20,17 +19,17 @@ public class ArticleController {
 
     // Embeded Methods
     @GetMapping("/findAll")
-    public List<Article> findAll() {
+    public List<Article1> findAll() {
         return service.findAll();
     }
 
     @GetMapping("/findAll/sort")
-    public List<Article> findAll(Sort sort) {
+    public List<Article1> findAll(Sort sort) {
         return service.findAll(sort);
     }
 
     @GetMapping("/findAll/pageable")
-    public Page<Article> findAll(Pageable pageable) {
+    public Page<Article1> findAll(Pageable pageable) {
         return service.findAll(pageable);
     }
 
@@ -40,12 +39,12 @@ public class ArticleController {
     }
 
     @DeleteMapping("/delete")
-    public String delete(@RequestBody Article article) {
+    public String delete(@RequestBody Article1 article) {
         return service.delete(article);
     }
 
     @PostMapping("/join")
-    public String save(@RequestBody Article article) {
+    public String save(@RequestBody Article1 article) {
         return service.save(article);
     }
 

@@ -18,19 +18,8 @@ public class UserServiceImpl implements UserService{
     private final UserRepository repository;
 
     @Override
-    public void join(User join) {
-
-    }
-
-    @Override
-    public String login(User login) {
-
+    public String login(User user) {
         return null;
-    }
-
-    @Override
-    public void logout(User logout) {
-
     }
 
     @Override
@@ -54,6 +43,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public String update(User user) {
+        return null;
+    }
+
+    @Override
     public String delete(User user) {
         return null;
     }
@@ -74,17 +68,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public String put(User user) {
+    public List<User> findByUserName(String name) {
         return null;
     }
 
-
     @Override
-    public List<User> findByUserName(String name) {
-        List<User> ls = repository.findAll();
-        Box<String, User> box = new Box<>();
-        //ls = box.findByUserName(ls, name);
-        //ls.stream().filter()~~ 이렇게 간다.
+    public String put(User user) {
         return null;
     }
 }

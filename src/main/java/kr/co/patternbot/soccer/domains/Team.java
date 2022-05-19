@@ -1,28 +1,40 @@
 package kr.co.patternbot.soccer.domains;
 
-import lombok.Data;
+import lombok.*;
+import org.springframework.data.repository.cdi.Eager;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
+@Builder
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 @Component
+@Eager
 @Table(name = "teams")
 public class Team {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long teamId;
+    @Id @Column(name = "team_no")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) private long teamNo;
+    @Column(nullable = false) private String teamId;
+    @Column(nullable = false) private String stadiumId;
     private String regionName;
     private String teamName;
     private String eTeamName;
     private String origYyyy;
-    private String stadiumId;
-    private String zipcode1;
-    private String zipcode2;
+    private String zipCode1;
+    private String zipCode2;
     private String address;
     private String ddd;
     private String tel;
     private String fax;
     private String homepage;
-    private String teamOwner;
+    private String owner;
+
+    @OneToMany(mappedBy = "team")
+    List<Player> players = new ArrayList<>();
 }

@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Component
 @Entity
 @Table(name = "boards")
-public class Article {
+public class Article1 {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String projects;
