@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -31,7 +31,6 @@ public class UserController {
     public String put(@RequestBody User user) {
         return service.put(user);
     }
-
 
     // Embeded Methods
     @GetMapping("/findAll")
