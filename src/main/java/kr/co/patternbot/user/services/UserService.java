@@ -1,6 +1,6 @@
-package kr.co.patternbot.auth.services;
+package kr.co.patternbot.user.services;
 
-import kr.co.patternbot.auth.domains.User;
+import kr.co.patternbot.user.domains.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

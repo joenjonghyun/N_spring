@@ -1,4 +1,4 @@
-package kr.co.patternbot.auth.domains;
+package kr.co.patternbot.user.domains;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.Arrays;
 
 //권한을 주는거임 그랜티드어쏠리티.
-//게터만 쓰고 빌더를 안 쓴다는 것은 read 온리임 수정불가능.
+//게터만 쓰고 빌더를 안 쓴다는 것은 read only, 수정불가능.
 @Getter
 @RequiredArgsConstructor
 public enum Role implements GrantedAuthority {

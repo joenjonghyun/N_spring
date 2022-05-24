@@ -1,8 +1,7 @@
-package kr.co.patternbot.auth.services;
+package kr.co.patternbot.user.services;
 
-import kr.co.patternbot.auth.domains.User;
-import kr.co.patternbot.auth.repositories.UserRepository;
-import kr.co.patternbot.common.dataStructure.Box;
+import kr.co.patternbot.user.domains.User;
+import kr.co.patternbot.user.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

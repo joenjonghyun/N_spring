@@ -1,6 +1,5 @@
 package kr.co.patternbot.soccer.controllers;
 
-import kr.co.patternbot.auth.domains.User;
 import kr.co.patternbot.soccer.domains.Schedule;
 import kr.co.patternbot.soccer.services.ScheduleService;
 import lombok.RequiredArgsConstructor;

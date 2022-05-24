@@ -1,7 +1,7 @@
 package kr.co.patternbot.board.domains;
 
 import com.sun.istack.NotNull;
-import kr.co.patternbot.auth.domains.User;
+import kr.co.patternbot.user.domains.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

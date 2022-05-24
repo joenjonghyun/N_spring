@@ -1,7 +1,6 @@
 package kr.co.patternbot.soccer.services;
 
 
-import kr.co.patternbot.auth.domains.User;
 import kr.co.patternbot.soccer.domains.Player;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
