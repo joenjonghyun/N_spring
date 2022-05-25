@@ -8,6 +8,7 @@ import java.util.List;
 
 
 //미확인방문자라는 Dto
+//추적하는거임 아래골뱅이들은
 @Component @Data
 public class UserDTO {
     @ApiModelProperty(position = 1) private long userId;

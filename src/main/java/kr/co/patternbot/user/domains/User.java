@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-
+//디비로 가는건 유저
 @Entity
 @Eager
 @Table(name = "users")
