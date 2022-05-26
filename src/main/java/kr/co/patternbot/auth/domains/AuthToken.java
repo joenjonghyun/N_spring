@@ -21,21 +21,21 @@ public class AuthToken {
     private String createToken() {
         try{
             Map<String, Object> headers = new HashMap<>();
-            headers.put("typ", "JWT");
-            headers.put("alg", "HS256");
+            headers.put("typ","JWT");
+            headers.put("alg","HS256");
             Map<String, Object> payload = new HashMap<>();
-            payload.put("data", "dummy");
-            Date ext = new Date();
-            ext.setTime(ext.getTime() + 1000 * 60L * 10L); //시간을 나타낸 것인데 60초 X 10초 해서 600초 = 10분을 나타냄
+            payload.put("data","dummy");
+            Date exp = new Date();
+            exp.setTime(exp.getTime() + 1000 * 60L * 10L); // 10분
             return Jwts.builder()
                     .setHeader(headers)
-                    .setClaims(payload)  //payload는 리액트라 생각하셈
+                    .setClaims(payload)
                     .setSubject("user")
-                    .setExpiration(ext)
-                    .signWith(SignatureAlgorithm.HS256, key.getBytes()) //H256으로 암호를 해독하겠단 뜻. H256이건 자주바뀜
+                    .setExpiration(exp)
+                    .signWith(SignatureAlgorithm.HS256, key.getBytes())
                     .compact();
         }
-        catch (SecurityException e){log.info("SecurityException JWT");}  //이상이 발생하면 해당 인셉션에 대해 찍어라 라는 뜻
+        catch (SecurityException e){log.info("SecurityException JWT");}
         catch (MalformedJwtException e){log.info("MalformedJwtException JWT");}
         catch (ExpiredJwtException e){log.info("ExpiredJwtException JWT");}
         catch (UnsupportedJwtException e){log.info("UnsupportedJwtException JWT");}

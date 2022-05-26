@@ -19,8 +19,8 @@ import java.nio.file.AccessDeniedException;
 public class AuthExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
     protected ResponseEntity<Messenger> handleRuntimeException(RuntimeException e){
-        log.info("handleRuntimeException", e); //로그는 상태가 없음 롬복에서 처리하는거라
-        return new ResponseEntity<>( Messenger.builder()
+        log.info("handleRuntimeException", e);
+        return new ResponseEntity<>(Messenger.builder()
                 .code("test").message(e.getMessage())
                 .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .build(),
@@ -33,7 +33,8 @@ public class AuthExceptionHandler {
                 .code(ErrorCode.AUTHENTICATION_FAILED.getCode())
                 .message(e.getMessage())
                 .status(ErrorCode.AUTHENTICATION_FAILED.getStatus())
-                .build(), HttpStatus.UNAUTHORIZED);
+                .build(),
+                HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(LoginRunnerException.class)
@@ -63,7 +64,8 @@ public class AuthExceptionHandler {
                 .code(ErrorCode.ACCESS_DENIED.getCode())
                 .message(ErrorCode.ACCESS_DENIED.getMsg())
                 .status(ErrorCode.ACCESS_DENIED.getStatus())
-                .build(), HttpStatus.UNAUTHORIZED);
+                .build(),
+                HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(InsufficientAuthenticationException.class)
@@ -73,6 +75,7 @@ public class AuthExceptionHandler {
                 .code(ErrorCode.AUTHENTICATION_FAILED.getCode())
                 .message(ErrorCode.AUTHENTICATION_FAILED.getMsg())
                 .status(ErrorCode.AUTHENTICATION_FAILED.getStatus())
-                .build(), HttpStatus.UNAUTHORIZED);
+                .build(),
+                HttpStatus.UNAUTHORIZED);
     }
 }

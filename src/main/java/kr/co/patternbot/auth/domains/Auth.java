@@ -29,25 +29,19 @@ public class Auth implements UserDetails {
         return new Auth(user.getUserId(), user.getUsername(), user.getPassword(),
                 user.getName(), user.getEmail(), authorities);
     }
-
-    private final Collection<? extends  GrantedAuthority> authorities;
-    
-
+    private final Collection<? extends GrantedAuthority> authorities;
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
-
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
-
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
-
     @Override
     public boolean isEnabled() {
         return true;

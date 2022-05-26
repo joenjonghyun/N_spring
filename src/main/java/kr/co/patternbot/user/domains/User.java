@@ -14,8 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 //디비로 가는건 유저
+@ToString
+@Setter
 @Entity
-@Eager
 @Table(name = "users")
 public class User {
     @Id @Column(name = "user_id")

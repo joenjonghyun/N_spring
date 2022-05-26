@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
-    UserDTO login(User user);
+    UserDTO login(UserDTO user);
 
     List<User> findAll();
 
@@ -25,7 +25,7 @@ public interface UserService {
 
     Messenger delete(User user);
 
-    Messenger save(User user);
+    Messenger save(UserDTO user);
 
     Optional<User> findById(String userid);
 
@@ -34,6 +34,7 @@ public interface UserService {
     // custom
 
     List<User> findByUserName(String name);
+
 
     Messenger logout();
 

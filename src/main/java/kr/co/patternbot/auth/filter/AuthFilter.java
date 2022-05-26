@@ -22,7 +22,7 @@ public class AuthFilter extends OncePerRequestFilter {
     private final AuthProvider provider;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        String token = provider.resolveToken(request); //리퀘스트 안에있는 토큰을 처리한다는 뜻이라고 생각해
+        String token = provider.resolveToken(request);
         try{
             if(token != null && provider.validateToken(token)){
                 Authentication auth = provider.getAuthentication(token);

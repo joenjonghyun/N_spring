@@ -8,7 +8,10 @@ import static kr.co.patternbot.common.dataStructure.AppleList.Apple;
 
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
@@ -79,6 +82,10 @@ public class Lambda {
     public static File makefile(String a){
         Function<String, File> f = File::new;
         return f.apply(a);
+    }
+    public static String date(){
+        Supplier<String> f = () -> string(LocalDate.now());
+        return f.get();
     }
 }
 

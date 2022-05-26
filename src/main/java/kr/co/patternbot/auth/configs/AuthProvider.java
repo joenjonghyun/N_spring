@@ -37,23 +37,23 @@ public class AuthProvider implements AuthenticationProvider {
     private String securityKey;
 
     @Value("${security.jwt.token.expiration-length:3600000}")
-    private long validityInMs = 3600000; //1h
+    private long validityInMs = 3600000; // 1h
 
     @PostConstruct
     protected void init(){
         securityKey = Base64.getEncoder().encodeToString(securityKey.getBytes());
-        log.info("securityKey: "+securityKey); //토큰생성한걸 값으로찍어서보려는 작업임 나중에는 지워야돼
+        log.info("securityKey: "+securityKey);
     }
 
     //roles는 사용자들 위치에 따라서 보기를 다르게 할 수 있는 코드
     public String createToken(String username, List<Role> roles){
         Claims claims = Jwts.claims().setSubject(username);
         claims.put("auth", roles.stream().map(s -> new SimpleGrantedAuthority(s.getAuthority()))
-                .filter(Objects::nonNull).collect(Collectors.toSet()));
+                .filter(Objects::nonNull).collect(Collectors.toList()));
         Date now = new Date();
         Date validity = new Date(now.getTime()+validityInMs);
         return Jwts.builder().setClaims(claims).setIssuedAt(now)
-                .setExpiration(validity).signWith(SignatureAlgorithm.ES256, securityKey)
+                .setExpiration(validity).signWith(SignatureAlgorithm.HS256, securityKey)
                 .compact();
     }
     public Authentication getAuthentication(String token){
@@ -65,7 +65,7 @@ public class AuthProvider implements AuthenticationProvider {
     }
     public String resolveToken(HttpServletRequest request){
         String bearerToken = request.getHeader("Authorization");
-        if (bearerToken != null && bearerToken.startsWith("Bearer")){
+        if(bearerToken != null && bearerToken.startsWith("Bearer")){
             return bearerToken.substring(7);
         }
         return null;
@@ -74,7 +74,7 @@ public class AuthProvider implements AuthenticationProvider {
         try{
             Jwts.parser().setSigningKey(securityKey).parseClaimsJws(token);
             return true;
-        }catch (JwtException | IllegalArgumentException e){
+        }catch(JwtException | IllegalArgumentException e){
             throw new Exception();
         }
     }
