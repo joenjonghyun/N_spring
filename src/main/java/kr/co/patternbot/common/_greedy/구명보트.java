@@ -12,9 +12,12 @@ public class 구명보트 {
     @Builder
     @Getter
     @AllArgsConstructor
-    public static class Solution{ }
+    public static class Solution{
+
+    }
     @FunctionalInterface
     public interface SolutionService {구명보트.Solution solution(구명보트.Solution s);}
+
     @Test
     void testSolution(){}
 }
