@@ -12,7 +12,7 @@ public class 단속카메라 {
     @Getter
     @NoArgsConstructor
     public static class Solution{
-        protected int [][] routes;
+        private int [][] routes;
         private int answer = 0;
 
     }

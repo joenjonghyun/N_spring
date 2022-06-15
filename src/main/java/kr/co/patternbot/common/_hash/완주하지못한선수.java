@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.Test;
+
+import java.util.HashMap;
+
 /**
  * 기본 틀 만들 때 여기를 참고
  * participant	completion	return
@@ -12,6 +15,7 @@ import org.junit.jupiter.api.Test;
  * ["marina", "josipa", "nikola", "vinko", "filipa"]	["josipa", "filipa", "marina", "nikola"]	"vinko"
  * ["mislav", "stanko", "mislav", "ana"]	["stanko", "ana", "mislav"]	"mislav"
  * */
+//이거할거임
 
 public class 완주하지못한선수 {
     @Getter
@@ -24,7 +28,7 @@ public class 완주하지못한선수 {
 
         @Override
         public String toString(){
-            return String.format("");
+            return String.format("완주하지 못한 선수 :%d", answer);
         }
     }
 
@@ -34,15 +38,37 @@ public class 완주하지못한선수 {
     static class Service{
         Solution test(Solution s){
             SolutionService<Solution, Solution> f = e -> {
-                String answer = "leo";
+                e.answer = "";
+                HashMap<String, Integer> map = new HashMap<>();
+                for (String st: e.participant) {
+                    if(map.get(st) == null){
+                        map.put(st, 1);
+                    } else {
+                        map.put(st, map.get(st)+1);
+                    }
+                }
+
+                for (String st : e.completion){
+                    if(map.get(st) != 0) {
+                        map.put(st, map.get(st)-1);
+                    }
+                }
+
+                for (String key : map.keySet()){
+                    if (map.get(key) !=0 ) {
+
+                    }
+                }
                 return Solution.builder()
                         .participant(e.getParticipant())
                         .completion(e.getCompletion())
-                        .answer(answer)
+                        .answer(e.answer)
                         .build();
             };
             return f.solution(s);
+
         }
+
     }
 
     @Test
