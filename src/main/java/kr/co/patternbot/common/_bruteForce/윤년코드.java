@@ -61,6 +61,9 @@ public class 윤년코드 {
     @FunctionalInterface interface SolutionService {
         윤년코드.Solution solution(윤년코드.Solution s);
     }
+
+    class Service{
+    }
     @Test
     void testSolution(){
 

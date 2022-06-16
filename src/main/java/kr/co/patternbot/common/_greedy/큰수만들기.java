@@ -47,12 +47,6 @@ public class 큰수만들기 {
         }
 
         class Service {
-            Solution test(Solution s) {
-                SolutionService f = e -> {
-                    e.answer = e.k;
-                    int[] num = new int[e.k];
-                }
-            }
         }
 
         @Test
