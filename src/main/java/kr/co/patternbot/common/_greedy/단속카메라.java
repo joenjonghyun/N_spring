@@ -13,13 +13,26 @@ public class 단속카메라 {
     @NoArgsConstructor
     public static class Solution{
         private int [][] routes;
-        private int answer = 0;
+        private int answer;
 
     }
     @FunctionalInterface
     public interface SolutionService {단속카메라.Solution solution(단속카메라.Solution s);}
 
+    class Service{
+        SolutionService f = e -> {
+            return Solution.builder().build();
+        };
+        Solution test(Solution s){
+            return f.solution(s);
+        }
+    }
+
     @Test
-    void testSolution(){}
+    void testSolution(){
+        int[][] routes = {{}};
+        int answer =0;
+        Solution s = Solution.builder().routes(routes).answer(answer).build();
+    }
 }
 

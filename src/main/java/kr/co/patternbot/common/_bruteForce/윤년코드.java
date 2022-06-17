@@ -1,7 +1,6 @@
 package kr.co.patternbot.common._bruteForce;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.Scanner;
@@ -35,37 +34,4 @@ import java.util.Scanner;
  * ================================
  * 2022-05-23   parkjungkwan  최초 생성
  */
-public class 윤년코드 {
-    @Data
-    @AllArgsConstructor
-    static class Solution{
-
-        @Override public String toString(){
-
-            System.out.println("04 윤년");
-            //윤년은 해당년도가 4로 나눈 나머지값이 0인것이다. (i%4==0)
-            //그리고(and==>&&) 100으로 나눈 나머지값이 0인것은 윤년에서 제외되며(부정[default값 반대=!](i%100!=0)
-            //또는(or==>||)400으로 나눈값은 윤년(i%400==0)
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("연도를 입력해주세요!");
-            int i = scanner.nextInt();
-            String s;
-            if ((i % 4 == 0 && i % 100 != 0) || i % 400 == 0) {
-                s = "윤년";
-            } else
-                s = "평년";
-            System.out.println(String.format("%d는 %s입니다.", i, s));
-            return "";
-        }
-    }
-    @FunctionalInterface interface SolutionService {
-        윤년코드.Solution solution(윤년코드.Solution s);
-    }
-
-    class Service{
-    }
-    @Test
-    void testSolution(){
-
-    }
-}
+public class 윤년코드 {}

@@ -6,7 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * 기본 틀 만들 때 여기를 참고
@@ -18,83 +21,49 @@ import java.util.HashMap;
 //이거할거임
 
 public class 완주하지못한선수 {
-    @Getter
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class Solution {
-        private String [] participant,completion;
+    @Builder @NoArgsConstructor @Getter @AllArgsConstructor
+    public static class Solution{
+        //속성
+        private String[] participant;
+        private String[] completion;
         private String answer;
 
-        @Override
-        public String toString(){
-            return String.format("완주하지 못한 선수 :%d", answer);
-        }
+        @Override public String toString(){return String.format("%s, %s, %s",
+                Arrays.toString(participant), Arrays.toString(completion), answer);}
     }
 
-    @FunctionalInterface private interface SolutionService<T,R>{
-        R solution(T t);
+    @FunctionalInterface public interface SolutionService{
+        Solution solution(Solution s);
     }
     static class Service{
-        Solution test(Solution s){
-            SolutionService<Solution, Solution> f = e -> {
-                e.answer = "";
-                HashMap<String, Integer> map = new HashMap<>();
-                for (String st: e.participant) {
-                    if(map.get(st) == null){
-                        map.put(st, 1);
-                    } else {
-                        map.put(st, map.get(st)+1);
-                    }
+        SolutionService f = e -> {
+            e.answer = "";
+            HashMap<String, Integer> hashMap = new HashMap<>();
+            for (String player : e.participant) hashMap.put(player, hashMap.getOrDefault(player, 0)+1);
+            for (String player : e.completion) hashMap.put(player, hashMap.get(player) -1);
+            for (String key : hashMap.keySet()){
+                if (hashMap.get(key) != 0){
+                    e.answer = key;
                 }
-
-                for (String st : e.completion){
-                    if(map.get(st) != 0) {
-                        map.put(st, map.get(st)-1);
-                    }
-                }
-
-                for (String key : map.keySet()){
-                    if (map.get(key) !=0 ) {
-
-                    }
-                }
-                return Solution.builder()
-                        .participant(e.getParticipant())
-                        .completion(e.getCompletion())
-                        .answer(e.answer)
-                        .build();
-            };
-            return f.solution(s);
-
-        }
-
+            }
+            return Solution.builder()
+                    .answer(e.getAnswer())
+                    .completion(e.getCompletion())
+                    .participant(e.getParticipant())
+                    .build();
+        };
+        Solution test(Solution s){return f.solution(s);}
     }
-
-    @Test
-    void testSolutionTest(){
-        String[] participant1 ={"leo", "kiki", "eden"};
-        String[] completion1 ={"eden", "kiki"};
-        String[] participant2 ={"marina", "josipa", "nikola", "vinko", "filipa"};
-        String[] completion2 ={"josipa", "filipa", "marina", "nikola"};
-        String[] participant3 ={"mislav", "stanko", "mislav", "ana"};
-        String[] completion3 ={"stanko", "ana", "mislav"};
-
-        Solution s1 = Solution.builder()
-                .participant(participant1)
-                .completion(completion1)
+    @Test void testSolutionTest(){
+        String[] participant = {"leo", "kiki", "eden"};
+        String[] completion = {"kiki", "eden"};
+        String answer = "";
+        Service s1 = new Service();
+        Solution s = Solution.builder()
+                .participant(participant)
+                .completion(completion)
+                .answer(answer)
                 .build();
-        Solution s2 = Solution.builder()
-                .participant(participant2)
-                .completion(completion2)
-                .build();
-        Solution s3 = Solution.builder()
-                .participant(participant3)
-                .completion(completion3)
-                .build();
-        System.out.println(new Service().test(s1));
-        System.out.println(new Service().test(s2));
-        System.out.println(new Service().test(s3));
-
+        System.out.println(s1.test(s));
     }
 }

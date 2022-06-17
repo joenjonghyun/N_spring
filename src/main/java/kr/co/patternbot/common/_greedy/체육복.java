@@ -30,6 +30,7 @@ import java.util.Arrays;
  *
  */
 
+
 //이거할거고
 public class 체육복 {
     @Builder @Getter @NoArgsConstructor @AllArgsConstructor
@@ -48,7 +49,7 @@ public class 체육복 {
     }
 
     class Service{
-        Solution test(Solution s) {
+
             SolutionService f = e -> {
                 e.answer = e.n;
                 int[] student = new int[e.n];
@@ -73,8 +74,7 @@ public class 체육복 {
                         .answer(e.getAnswer())
                         .build();
             };
-            return f.solution(s);
-        }
+        Solution test(Solution s) {return f.solution(s);}
     }
 
     @Test void testSolutionTest(){

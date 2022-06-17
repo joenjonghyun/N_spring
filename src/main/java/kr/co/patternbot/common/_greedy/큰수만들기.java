@@ -38,7 +38,7 @@ public class 큰수만들기 {
 
         @Override
         public String toString() {
-            return String.format("");
+            return String.format("%d", answer);
         }
 
         @FunctionalInterface
@@ -47,10 +47,45 @@ public class 큰수만들기 {
         }
 
         class Service {
+            SolutionService f = e -> {
+                e.answer = e.k;
+                StringBuilder answer = new StringBuilder("");
+                int len = number.length() - k;
+                int start = 0;
+
+                while(start < number.length() && answer.length() != len) {
+                    int leftNum = k + answer.length() + 1;
+                    int max = 0;
+                    for (int j = start; j < leftNum; j++) {
+                        if (max < number.charAt(j) - '0') {
+                            max = number.charAt(j) - '0';
+                            start = j + 1;
+                        }
+                    }
+                    answer.append(Integer.toString(max));
+                }
+             return Solution.builder()
+                     .k(getK())
+                     .answer(getAnswer())
+                     .number(getNumber())
+                     .build();
+            };
+            Solution test(Solution s){
+                return f.solution(s);
+            }
         }
 
         @Test
         void testSolutionTest() {
+            String number = "1924";
+            int k = 2;
+            Solution solution = Solution.builder()
+                    .number(number)
+                    .k(k)
+                    .answer(answer)
+                    .build();
+            Service service = new Service();
+            System.out.println(service.test(solution));
 
         }
     }
