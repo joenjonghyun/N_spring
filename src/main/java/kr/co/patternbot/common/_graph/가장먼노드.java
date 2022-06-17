@@ -45,8 +45,6 @@ public class 가장먼노드 {
         int n = 6;
         int[][] vertex = {{3, 6}, {4, 3}, {3, 2}, {1, 3}, {1, 2}, {2, 4}, {5, 2}};
         Solution s = Solution.builder()
-                .n(n)
-                .vertex(vertex)
                 .build();
         Service s1 = new Service();
         System.out.println(s1.test(s));
