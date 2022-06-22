@@ -34,4 +34,46 @@ import java.util.Scanner;
  * ================================
  * 2022-05-23   parkjungkwan  최초 생성
  */
-public class 윤년코드 {}
+public class 윤년코드 {
+    @Builder @Getter @NoArgsConstructor @AllArgsConstructor
+    public static class Solution{
+        private int year;
+        private int answer;
+
+
+        @Override public String toString(){
+            return String.format("윤년:", answer);
+        }
+    }
+
+    @FunctionalInterface public interface SolutionService{
+        Solution solution(Solution s);
+    }
+
+    public static class Service{
+        SolutionService f = e -> {
+
+            e.answer = 0;
+            if (1<=e.year&&e.year<4000){
+                if ((e.year % 4 == 0) && (e.year % 100 != 0 || e.year % 400 == 0))
+                    System.out.println("1");
+            }else {
+                System.out.println("0");
+            };
+
+            return Solution.builder()
+                    .answer(e.getAnswer())
+                    .year(e.getYear())
+                    .build();
+        };
+        Solution test(Solution s){
+            return f.solution(s);
+        }
+    }
+    @Test void testSolutionTest(){
+        int year = 0;
+        Service service = new Service();
+        Solution solution = Solution.builder().year(year).build();
+        System.out.println(service.test(solution));
+    }
+}

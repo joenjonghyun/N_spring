@@ -27,7 +27,7 @@ import java.util.Arrays;
  * 5번 선수는 4위인 2번 선수에게 패배했기 때문에 5위입니다.
  */
 
-//이거 틀렸음 다시해야돼 값이 아니야
+
 public class 순위 {
     @Builder @Getter @AllArgsConstructor @NoArgsConstructor
     public static class Solution{
@@ -48,7 +48,7 @@ public class 순위 {
 
     public static class Service{
         SolutionService f = e -> {
-            e.answer = e.n;
+            e.answer = 0;
             int[][] graph = new int[e.n + 1][e.n + 1];
 
             for (int i = 0; i < e.results.length; i++)
@@ -83,7 +83,7 @@ public class 순위 {
     @Test void testSolutionTest(){
         int n = 5;
         int[][] results = {{4, 3}, {4, 2}, {3, 2}, {1, 2}, {2, 5}};
-        int answer = 2;
+        int answer = 0;
         Service service = new Service();
         Solution solution = Solution.builder()
                 .n(n)
