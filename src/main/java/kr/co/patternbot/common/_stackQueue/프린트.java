@@ -1,21 +1,17 @@
 package kr.co.patternbot.common._stackQueue;
 
-import kr.co.patternbot.common._graph.순위;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.Test;
 
+
 import java.util.Collections;
+
 import java.util.PriorityQueue;
 
 /**
- * packageName: com.toomuchcoder.api.common._stackQueue
- * fileName        : 프린트.java
- * author          : solyikwon
- * date            : 2022-05-25
- * desc            :
  * 일반적인 프린터는 인쇄 요청이 들어온 순서대로 인쇄합니다. 그렇기 때문에 중요한 문서가 나중에 인쇄될 수 있습니다.
  * 이런 문제를 보완하기 위해 중요도가 높은 문서를 먼저 인쇄하는 프린터를 개발했습니다.
  * 이 새롭게 개발한 프린터는 아래와 같은 방식으로 인쇄 작업을 수행합니다.
@@ -36,10 +32,6 @@ import java.util.PriorityQueue;
  * priorities          location          return
  * [2, 1, 3, 2]           2                1
  * [1, 1, 9, 1, 1, 1]     0                5
- * =============================================
- * DATE              AUTHOR        NOTE
- * =============================================
- * 2022-05-25         solyikwon      최초 생성
  **/
 public class 프린트 {
     @Builder
@@ -50,7 +42,7 @@ public class 프린트 {
     public static class Solution{
         private int priority;
         private int location;
-        private int[] priorities;
+        private Integer[] priorities;
         private int answer;
 
 
@@ -91,15 +83,13 @@ public class 프린트 {
     }
     @Test
     void testSolution(){
-        int[] priorities = {2,1,3,2};
-        int location = 2;
-        int priority;
-        int answer = 0;
+        Integer[] priorities = {2,1,3,2};
+        int location = priorities.length-1;
+        int answer = 0 ;
         Service s2 = new Service();
         Solution s = Solution.builder()
                 .priorities(priorities)
-                .location(location)
-                .answer(answer).build();
+                .location(location).answer(answer).build();
         System.out.println(s2.test(s));
 
 

@@ -48,7 +48,7 @@ public class 체육복 {
         Solution solution(Solution s);
     }
 
-    class Service{
+    public static class Service{
 
             SolutionService f = e -> {
                 e.answer = e.n;
