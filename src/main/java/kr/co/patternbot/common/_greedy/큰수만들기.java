@@ -34,35 +34,36 @@ public class 큰수만들기 {
     public static class Solution {
         private String number;
         private int k;
-        private int answer;
+        private String answer;
 
         @Override
         public String toString() {
-            return String.format("%d", answer);
+            return String.format("%s", answer);
         }
 
+
         @FunctionalInterface
-        private interface SolutionService {
+        public interface SolutionService {
             Solution solution(Solution s);
         }
 
         class Service {
             SolutionService f = e -> {
-                e.answer = e.k;
+                e.answer = "";
                 StringBuilder answer = new StringBuilder("");
-                int len = number.length() - k;
+                int len = e.number.length() - e.k;
                 int start = 0;
 
-                while(start < number.length() && answer.length() != len) {
-                    int leftNum = k + answer.length() + 1;
+                while(start < e.number.length() && answer.length() != len) {
+                    int leftNum = e.k + answer.length() + 1;
                     int max = 0;
                     for (int j = start; j < leftNum; j++) {
-                        if (max < number.charAt(j) - '0') {
-                            max = number.charAt(j) - '0';
+                        if (max < e.number.charAt(j) - '0') {
+                            max = e.number.charAt(j) - '0';
                             start = j + 1;
                         }
                     }
-                    answer.append(Integer.toString(max));
+                    answer.append(max);
                 }
              return Solution.builder()
                      .k(getK())
@@ -82,7 +83,6 @@ public class 큰수만들기 {
             Solution solution = Solution.builder()
                     .number(number)
                     .k(k)
-                    .answer(answer)
                     .build();
             Service service = new Service();
             System.out.println(service.test(solution));
